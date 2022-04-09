@@ -21,7 +21,7 @@ public class DownloadTask extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... urls) {
         String result = "";
         URL url;
-        HttpURLConnection urlConnection = null;
+        HttpURLConnection urlConnection;
 
         try{
 
@@ -64,7 +64,7 @@ public class DownloadTask extends AsyncTask<String,Void,String> {
                if(!main.equals("") && !description.equals("")){
                    message += main + ": " + description;
                    Log.i("message",message);
-                    Update();
+                   textView.setText(message);
 
                }
                 
@@ -74,12 +74,10 @@ public class DownloadTask extends AsyncTask<String,Void,String> {
             e.printStackTrace();
         }
     }
-
     public DownloadTask(TextView tv){
         textView = tv;
     }
-    public void Update(){
-        textView.setText(message);
-    }
+
+
 }
 

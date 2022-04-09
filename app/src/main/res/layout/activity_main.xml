@@ -4,46 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/rain">
 
     <EditText
         android:id="@+id/editTextCityName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="100dp"
-        android:ems="10"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
         android:hint="Podaj miasto"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:minHeight="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewWeather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="244dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/searchbar_background"/>
 
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="155dp"
-        android:layout_marginTop="66dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="98dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:minHeight="50dp"
         android:onClick="checkWeather"
-        app:layout_constraintBottom_toTopOf="@+id/textViewWeather"
+        android:text="search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextCityName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@drawable/searchbutton_background"/>
+
+    <TextView
+        android:id="@+id/textViewCityName"
+        android:layout_width="wrap_content"
+        android:minWidth="150dp"
+        android:maxWidth="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/cityname_background"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:gravity="start|center"
+        android:paddingLeft="10dp"
+        android:paddingRight="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCityName"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/textViewWeather"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+       android:layout_marginHorizontal="50dp"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="50dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCityName" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCityName"
+        android:background="@drawable/weather_info_background"
+        android:visibility="invisible"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
