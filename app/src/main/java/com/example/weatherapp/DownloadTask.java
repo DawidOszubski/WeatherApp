@@ -2,6 +2,11 @@ package com.example.weatherapp;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -9,6 +14,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class DownloadTask extends AsyncTask<String,Void,String> {
+
+    static String message;
+    TextView textView;
     @Override
     protected String doInBackground(String... urls) {
         String result = "";
@@ -41,5 +49,37 @@ public class DownloadTask extends AsyncTask<String,Void,String> {
         super.onPostExecute(s);
         Log.i("JSON","" + s);
 
+        try {
+            JSONObject jsonObject = new JSONObject(s);
+
+             String weatherInfo = jsonObject.getString("weather");
+
+            JSONArray jsonArray = new JSONArray(weatherInfo);
+             message ="";
+           for(int i =0; i < jsonArray.length(); i++){
+               JSONObject jsonPart = jsonArray.getJSONObject(i);
+               String main = jsonPart.getString("main");
+               String description = jsonPart.getString("description");
+
+               if(!main.equals("") && !description.equals("")){
+                   message += main + ": " + description;
+                   Log.i("message",message);
+                    Update();
+
+               }
+                
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public DownloadTask(TextView tv){
+        textView = tv;
+    }
+    public void Update(){
+        textView.setText(message);
     }
 }
+
